@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {User} from '../models/user.model';
 import {HttpClient} from '@angular/common/http';
 
@@ -12,8 +13,6 @@ export class UserApiService {
   }
 
   getUsers(): Observable<User[]> {
-    // use user.json file and httpService
-
-    return of([]);
+    return this.httpService.get<User[]>('./assets/user.json').pipe(map(el => el['userList']));
   }
 }

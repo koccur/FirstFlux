@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {StoreModule} from '@ngrx/store';
 
 import { UserSwitchComponent } from './user-switch.component';
 
@@ -8,7 +9,8 @@ describe('UserSwitchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserSwitchComponent ]
+      declarations: [ UserSwitchComponent ],
+      imports: [StoreModule.forRoot({})]
     })
     .compileComponents();
   });

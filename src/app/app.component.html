@@ -1,6 +1,12 @@
 <div class="container min-vw-100">
-  <app-user-switch></app-user-switch>
-  <h2>Logged in as {{ (userService.getCurrentUser() | async)?.name}}</h2>
-  <h3>list here</h3>
-  <app-list [elements]="null"></app-list>
+  <app-user-switch [userState]="usersState$|async"></app-user-switch>
+  <div class="p-3">
+    <h2>Logged in as {{ (getCurrentUser() | async)?.name}}</h2>
+  </div>
+  <div class="p-5">
+    <app-item [items$]="items$" (addCollection)="onAddCollection($event)" (addElement)="onAddElement($event)"
+              (sort)="onSort()"></app-item>
+  </div>
 </div>
+
+<div class="content"><span>{{title}} app is running!</span></div>

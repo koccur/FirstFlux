@@ -1,0 +1,29 @@
+<h3>Items</h3>
+<ng-container *ngIf="items$|async as items;else empty">
+  <button class="btn btn-primary mb-3" *ngIf="items.length>1" (click)="sort.emit()">SORT</button>
+  <div class="book-item card mt-2 mb-4" *ngFor="let item of items">
+    <div class="card-body p-1 m-2">
+      <p>{{item.title}} - userId:{{item.userId}}</p>
+      <p>{{item.content}}</p>
+    </div>
+  </div>
+</ng-container>
+
+<form [formGroup]="addForm">
+
+  <h2 class="mb-3 mt-3">Add item</h2>
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" placeholder="title" [formControlName]="'title'">
+  </div>
+  <div class="mb-3">
+    <label for="title" class="form-label">Content</label>
+    <input type="text" class="form-control" id="content" placeholder="content" [formControlName]="'content'">
+  </div>
+  <div class="mb-3">
+    <button (click)="saveForm()" type="submit" class="btn btn-primary mb-3">Add</button>
+  </div>
+</form>
+<ng-template #empty>
+  <h4>List is empty, add some elements</h4>
+</ng-template>
